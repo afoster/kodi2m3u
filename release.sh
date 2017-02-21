@@ -168,7 +168,7 @@ GITHUB_URL="https://api.github.com/repos/$OWNER/$PROGRAM/releases?access_token=$
 JSON="{ \"tag_name\": \"$TAG_NAME\", \"name\": \"$RELEASE_NAME\", \"body\": \"$PROGRAM release $RELEASE_NAME\", \"target_commitsh\": \"master\" }"
 
 RESP=$(curl -X POST --data "$JSON" $GITHUB_URL)
-ASSETS_URL=$(echo "$RESP" | grep -oP '(?<="upload_url": ")(.*assets)')
+ASSETS_URL=$(echo "$RESP" | ggrep -oP '(?<="upload_url": ")(.*assets)')
 
 for pkg in "${PACKAGES[@]}"
 do
@@ -176,7 +176,7 @@ do
     UPLOAD_URL="$ASSETS_URL?name=$pkg&access_token=$GITHUB_API_TOKEN"
     echo $UPLOAD_URL
 
-    if [ -z "$(echo $pkg | grep -o ".zip")" ]; then
+    if [ -z "$(echo $pkg | ggrep -o ".zip")" ]; then
         HEADERS="Content-Type:application/zip"
     else
         HEADERS="Content-Type:application/gzip"
