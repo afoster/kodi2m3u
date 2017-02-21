@@ -18,11 +18,6 @@ func main() {
 	dbfile := os.Args[1]
 	outdir := os.Args[2]
 
-	cwd, err := os.Getwd()
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	// Play it cool with fields that might be empty
 	// But we won't write an m3u entry if either the path or file is null.
 	//
@@ -47,11 +42,6 @@ func main() {
 	}
 	defer genres.Close()
 
-	err = os.Mkdir(path.Join(cwd, "m3u"), 0755)
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	for genres.Next() {
 		var gid int
 		var genreName string
@@ -61,7 +51,7 @@ func main() {
 		}
 		fmt.Println("Found genre " + genreName)
 
-		f, err := os.Create(path.Join(cwd, "m3u", genreName+".m3u"))
+		f, err := os.Create(path.Join(outdir, genreName+".m3u"))
 		if err != nil {
 			log.Fatal(err)
 		}
