@@ -23,4 +23,7 @@ _testmain.go
 *.test
 *.prof
 
-m3u/*
+# Release
+build/*
+*.tar.gz
+*.zip
