@@ -13,7 +13,7 @@ Now you want a playlist for each genre. This tool will export an [m3u playlist](
 
 First, find your [Kodi userdata folder](http://kodi.wiki/view/Userdata). That's where the Kodi database sits, and also where you'll need to copy the generated playlist files.
 
-The database file should be in the `Database` sub-folder. On my system it's called `MyVideos107.db`.
+The database file should be in the `Database` sub-folder. On my system it's called `MyVideos107.db` (the `107` represents the Kodi database version).
 
 Now run the script:
 
