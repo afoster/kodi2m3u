@@ -24,3 +24,4 @@ Now copy the m3u files into your Kodi `playlists` folder. Restart Kodi.
 ## Notes
 
 This is my first try at [Golang](https://golang.org/), be kind.
+
